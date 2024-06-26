@@ -1,0 +1,11 @@
+*
+
+!bindings/
+!bindings/**
+
+!src/
+!src/**
+
+!.gitignore
+!Cargo.lock
+!Cargo.toml

@@ -1,0 +1,13 @@
+*
+
+!.vscode/
+!.vscode/settings.json
+
+!src/
+!src/**
+
+!wit/
+!wit/**
+
+!.gitignore
+!Cargo.toml
