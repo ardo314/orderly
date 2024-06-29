@@ -11,3 +11,5 @@
 
 !.gitignore
 !Cargo.toml
+
+src/bindings.rs
