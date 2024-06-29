@@ -3,6 +3,9 @@
 !.vscode/
 !.vscode/settings.json
 
+!hosts/
+!hosts/**
+
 !src/
 !src/**
 

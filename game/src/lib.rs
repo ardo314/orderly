@@ -1,3 +1,7 @@
+#[allow(warnings)]
+mod bindings;
+mod guest_impl;
+
 const PIECE_COUNT: usize = 10;
 
 pub struct Game {
