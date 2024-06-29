@@ -1,11 +1,16 @@
 *
 
-!bindings/
-!bindings/**
+!.vscode/
+!.vscode/settings.json
 
 !src/
 !src/**
 
+!wit/
+!wit/**
+
 !.gitignore
 !Cargo.lock
 !Cargo.toml
+
+src/bindings.rs
