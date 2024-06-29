@@ -1,6 +1,5 @@
-package component:wasm-component;
+package ardo:orderly;
 
-/// An example world for the component to target.
 world example {
     export hello-world: func() -> string;
 }

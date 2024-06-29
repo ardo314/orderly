@@ -17,6 +17,7 @@ name = "wasm_component"
 version = "0.1.0"
 dependencies = [
  "bitflags",
+ "game",
  "wit-bindgen-rt",
 ]
 
