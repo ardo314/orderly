@@ -1,5 +1,13 @@
 package ardo:orderly;
 
-world example {
-    export hello-world: func() -> string;
+interface core {
+    resource game {
+        constructor();
+
+        pieces: func() -> list<u32>;
+    }
+}
+
+world orderly {
+    export core;
 }
