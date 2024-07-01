@@ -8,7 +8,7 @@ const colors = shuffle([
   "green",
   "blue",
   "yellow",
-  "azure",
+  "cadetblue",
   "orange",
   "purple",
   "brown",
