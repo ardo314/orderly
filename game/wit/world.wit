@@ -5,6 +5,11 @@ interface core {
         constructor();
 
         pieces: func() -> list<u32>;
+        is-over: func() -> bool;
+        tries: func() -> u32;
+        correct-pieces-count: func() -> u32;
+
+        play: func(a: u32, b: u32);
     }
 }
 

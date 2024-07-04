@@ -19,19 +19,38 @@ const colors = shuffle([
 function App() {
   const gameRef = useRef(new core.Game());
   const [numbers, setNumbers] = useState<number[]>([])
+  const [number, setNumber] = useState<number | undefined>(undefined);
 
   function game() {
     return gameRef.current;
   }
 
-  useEffect(() => {
+  function readPieces() {
     setNumbers(Array.from(game().pieces()));
+  }
+
+  function selectNumber(index: number) {
+    if (number === undefined) {
+      setNumber(index);
+    }
+    else if (number !== index) {
+      game().play(number, index);
+      setNumber(undefined);
+      console.log(game().correctPiecesCount());
+      readPieces();
+    }
+  }
+
+  useEffect(() => {
+    readPieces();
   }, []);
 
   return (
     <>
       <div className="grid">
-        {numbers.map((_, index) => (<div key={index} className='grid-item' style={{ backgroundColor: colors[index] }} />))}
+        {numbers.map((v, index) => (
+          <div key={index} className='grid-item' style={{ backgroundColor: colors[v] }} onClick={() => selectNumber(index)} />
+        ))}
       </div>
     </>
   )
