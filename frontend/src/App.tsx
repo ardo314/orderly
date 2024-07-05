@@ -17,28 +17,29 @@ const COLORS = [
   "burlywood",
   "mediumslateblue"
 ];
-const colors = Array.from(core.shuffledList(PIECE_COUNT)).map((i) => COLORS[i]);
 
 type State = {
   pieces: number[];
   tries: number;
   correctPiecesCount: number;
+  isOver: boolean;
 };
+
+const colors = Array.from(core.shuffledList(PIECE_COUNT)).map((i) => COLORS[i]);
 
 function App() {
   const gameRef = useRef(new core.Game(PIECE_COUNT));
   const [state, setState] = useState<State>(getState());
   const [selectedIndex, setSelectedIndex] = useState<number | undefined>(undefined);
 
-  function game() {
-    return gameRef.current;
-  }
-
   function getState(): State {
+    const game = gameRef.current;
+
     return {
-      pieces: Array.from(game().pieces()),
-      tries: game().tries(),
-      correctPiecesCount: game().correctPiecesCount()
+      pieces: Array.from(game.pieces()),
+      tries: game.tries(),
+      correctPiecesCount: game.correctPiecesCount(),
+      isOver: game.isOver(),
     };
   }
 
@@ -47,7 +48,7 @@ function App() {
       setSelectedIndex(index);
     }
     else if (selectedIndex !== index) {
-      game().play(selectedIndex, index);
+      gameRef.current.play(selectedIndex, index);
       setState(getState());
       setSelectedIndex(undefined);
     }
@@ -55,7 +56,8 @@ function App() {
 
   return (
     <>
-      <span style={{color: "black"}}>{game().correctPiecesCount()}</span>
+      <span style={{color: "black"}}>{state.tries} - {state.correctPiecesCount}</span>
+      {state.isOver && <span style={{color: "black"}}>Game Over</span>}
       <div className="grid">
         {state.pieces.map((piece, index) => (
           <div key={index} className='grid-item' style={{ backgroundColor: colors[piece] }} onClick={() => selectIndex(index)} />
