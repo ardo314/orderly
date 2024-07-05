@@ -1,7 +1,7 @@
 use rand::Rng;
 
-pub fn shuffled_list(length: usize) -> Vec<usize> {
-    let mut list = (0..length).collect::<Vec<usize>>();
+pub fn shuffled_list(length: u32) -> Vec<u32> {
+    let mut list = (0..length).collect::<Vec<u32>>();
     let mut current_index = list.len() - 1;
     let mut rng = rand::thread_rng();
 
@@ -24,7 +24,7 @@ mod tests {
         let length = 10;
         let shuffled = shuffled_list(length);
 
-        assert_eq!(shuffled.len(), length);
+        assert_eq!(shuffled.len(), length as usize);
     }
 
     #[test]
@@ -34,15 +34,15 @@ mod tests {
         let mut unique = shuffled.clone();
         unique.sort_unstable();
         unique.dedup();
-        assert_eq!(unique.len(), length);
-        assert_eq!(unique, (0..length).collect::<Vec<usize>>());
+        assert_eq!(unique.len(), length as usize);
+        assert_eq!(unique, (0..length).collect::<Vec<u32>>());
     }
 
     #[test]
     fn test_shuffled_list_shuffling() {
         let length = 10;
         let shuffled = shuffled_list(length);
-        let original = (0..length).collect::<Vec<usize>>();
+        let original = (0..length).collect::<Vec<u32>>();
         assert_ne!(shuffled, original);
     }
 }

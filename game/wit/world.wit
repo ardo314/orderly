@@ -3,7 +3,7 @@ package ardo:orderly;
 interface core {
 
     resource game {
-        constructor();
+        constructor(piece-count: u32);
 
         pieces: func() -> list<u32>;
         is-over: func() -> bool;
@@ -13,7 +13,7 @@ interface core {
         play: func(a: u32, b: u32);
     }
 
-    shuffle: func(length: u32) -> list<u32>;
+    shuffled-list: func(length: u32) -> list<u32>;
 }
 
 world orderly {

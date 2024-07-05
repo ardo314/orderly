@@ -7,9 +7,11 @@ pub struct GameBinding {
 }
 
 impl GuestGame for GameBinding {
-    fn new() -> Self {
+    
+    fn new(piece_count: u32) -> Self {
         Self {
-            game: RefCell::new(Game::new()),
+            game: RefCell::new(Game::new(piece_count)),
+        
         }
     }
     
@@ -26,10 +28,10 @@ impl GuestGame for GameBinding {
     }
     
     fn correct_pieces_count(&self) -> u32 {
-        self.game.borrow().correct_pieces_count() as u32
+        self.game.borrow().correct_pieces_count()
     }
     
     fn play(&self, a: u32, b: u32) {
-        self.game.borrow_mut().play(a as usize, b as usize)
+        self.game.borrow_mut().play(a, b)
     }
 }
