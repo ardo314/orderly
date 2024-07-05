@@ -1,8 +1,10 @@
+use crate::shuffled_list::shuffled_list;
 
-const PIECE_COUNT: usize = 10;
+
+const PIECE_COUNT: usize = 12;
 
 pub struct Game {
-    pieces: [usize; PIECE_COUNT],
+    pieces: Vec<usize>,
     tries: u32,
     is_over: bool,
 }
@@ -10,14 +12,14 @@ pub struct Game {
 impl Game {
     pub fn new() -> Self {
         Game {
-            pieces: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+            pieces: shuffled_list(PIECE_COUNT),
             tries: 0,
             is_over: false,
         }
     }
 
-    pub fn pieces(&self) -> [usize; PIECE_COUNT] {
-        self.pieces
+    pub fn pieces(&self) -> &Vec<usize> {
+        &self.pieces
     }
 
     pub fn tries(&self) -> u32 {
@@ -38,17 +40,13 @@ impl Game {
         count
     }
 
-    pub fn play(&mut self, from: usize, to: usize) {
+    pub fn play(&mut self, a: usize, b: usize) {
         if self.is_over {
             return;
         }
 
         self.tries += 1;
-
-        let temp = self.pieces[from];
-        self.pieces[from] = self.pieces[to];
-        self.pieces[to] = temp;
-
+        self.pieces.swap(a, b);
         self.is_over = self.correct_pieces_count() == PIECE_COUNT;
     }
 }

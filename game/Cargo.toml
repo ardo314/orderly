@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 bitflags = "2.5.0"
 wit-bindgen-rt = "0.26.0"
+rand = "0.8.4"
 
 [lib]
 crate-type = ["cdylib"]
