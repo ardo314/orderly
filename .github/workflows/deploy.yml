@@ -28,9 +28,6 @@ jobs:
       with:
         node-version: '21'
 
-    - name: Install dependencies
-      run: cd frontend && npm install
-
     - name: Build the project
       run: scripts/build.sh
 
