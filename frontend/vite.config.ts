@@ -6,6 +6,9 @@ export default defineConfig({
   plugins: [react()],
   base: '/orderly/',
   optimizeDeps: {
+    esbuildOptions: {
+      target: "esnext"
+    },
     include: ['game'],
   },
   build: {
@@ -13,7 +16,7 @@ export default defineConfig({
   },
   esbuild: {
     supported: {
-      'top-level-await': true //browsers can handle top-level-await features
+      'top-level-await': true
     },
   }
 })
