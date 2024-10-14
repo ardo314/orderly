@@ -56,8 +56,8 @@ function App() {
 
   return (
     <>
-      <span style={{color: "black"}}>{state.tries} - {state.correctPiecesCount}</span>
-      {state.isOver && <span style={{color: "black"}}>Game Over</span>}
+      <span style={{ color: "black" }}>Tries: {state.tries} - Pieces in correct position: {state.correctPiecesCount}</span>
+      {state.isOver && <span style={{ color: "black" }}>Game Over</span>}
       <div className="grid">
         {state.pieces.map((piece, index) => (
           <div key={index} className='grid-item' style={{ backgroundColor: colors[piece] }} onClick={() => selectIndex(index)} />
