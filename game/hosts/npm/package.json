@@ -14,7 +14,7 @@
     }
   },
   "scripts": {
-    "generate": "jco transpile ../../target/wasm32-wasi/release/game.wasm -o dist"
+    "generate": "jco transpile ../../target/wasm32-wasip1/release/game.wasm -o dist"
   },
   "author": "",
   "license": "ISC",
